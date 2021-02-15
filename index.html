@@ -1,0 +1,82 @@
+<html>
+  <head>
+	<!-- CSS only -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+	<!-- JavaScript Bundle with Popper -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+	
+	<script type="text/javascript" src="https://github.com/matrix-org/matrix-js-sdk/releases/download/v9.6.0/browser-matrix.min.js"></script> 
+	<script type="text/javascript" src="main.js"></script> 
+  </head>
+  <body>
+	<h1>Stickerpack adder</h1>
+    <h2>Step 1: Set Homeserver</h2>
+	<form name="server" action="" class="container-sm">
+	  <div class="my-2">
+		<select class="form-select" onchange="showDiv('hsurl', this)" id="hssel">
+		  <option selected value="">Select HomeServer</option>
+		  <option>https://matrix.toldi.eu</option>
+		  <option>https://matrix.org</option>
+		  <option value="other">Other</option>
+		</select>
+	  </div>
+	  <div class="mb-3" style="display: none;" id="hsurl">
+		<label for="homeserverURL" class="form-label">Homeserver URL</label>
+		<input type="URL" class="form-control" id="homeserverURL">
+	  </div>
+	  <input name="submit" id="submit-server" type="submit" value="Set Homeserver" onClick="setHomeServer(this.form)" class="btn btn-primary"/>
+	  <br>
+	  <p class="my-2" id="hs-msg"></p>
+	</form>
+
+	<h2>Step 2: Login</h2>
+	<form name="login" action="" class="container-sm">
+	  <div class="mb-3">
+		<label for="username" class="form-label">Username</label>
+		<input type="text" class="form-control" id="username">
+	  </div>
+	  <div class="mb-3">
+		<label for="password" class="form-label">Password</label>
+		<input type="password" class="form-control" id="password">
+	  </div>
+	  <input name="submit" id="submit-login" type="submit" value="Login" onClick="loginForm(this.form)" class="btn btn-primary"/>
+	  <br>
+	  <p class="my-2" id="lg-msg"></p>
+	</form>
+
+    <h2>Step 3: Select stickerpack</h2>
+	<form name="packs" action="" class="container-sm">
+	  <div class="my-2">
+		<select class="form-select" onchange="showDiv('urlset', this)" id="packsel">
+		  <option selected value="">Select pack</option>
+		  <option value="https://bazsalanszky.github.io/stickerpicker/web/">Bazsalanszky's pack</option>
+		  <option value="https://maunium.net/stickers-demo/ ">Maunium sticker demo</option>
+		  <option value="other">Other</option>
+		</select>
+	  </div>
+	  <div class="my-3" style="display: none;" id="urlset">
+		<label for="packURL" class="form-label">Pack URL</label>
+		<input type="URL" class="form-control" id="packURL">
+	  </div>
+	  <input name="submit" id="submit-pack" type="submit" value="Add Stickerpack" onClick="addPack(this.form)" class="btn btn-success"/>
+	  <br>
+	  <p class="my-2" id="p-msg"></p>
+	</form>
+
+	<script>
+	  
+	  document.getElementById("submit-server").addEventListener("click", function(event){
+		  event.preventDefault()
+	  });
+	  document.getElementById("submit-login").addEventListener("click", function(event){
+		  event.preventDefault()
+	  });
+
+	  document.getElementById("submit-pack").addEventListener("click", function(event){
+		  event.preventDefault()
+	  });
+
+
+	</script>
+  </body>
+</html>
